@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'chriskacerguis\\RestServer\\' => array($vendorDir . '/chriskacerguis/codeigniter-restserver/src'),
-    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

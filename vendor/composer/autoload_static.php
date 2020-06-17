@@ -11,20 +11,12 @@ class ComposerStaticInitd85c71ae70ac18e8df4c9a21c0e0fab0
         array (
             'chriskacerguis\\RestServer\\' => 26,
         ),
-        'F' => 
-        array (
-            'Faker\\' => 6,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'chriskacerguis\\RestServer\\' => 
         array (
             0 => __DIR__ . '/..' . '/chriskacerguis/codeigniter-restserver/src',
-        ),
-        'Faker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
     );
 

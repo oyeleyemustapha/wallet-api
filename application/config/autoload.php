@@ -103,7 +103,7 @@ $autoload['helper'] = array('url', 'form');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+
 
 /*
 | -------------------------------------------------------------------
@@ -133,3 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array();
+$autoload['config'] = array('jwt');

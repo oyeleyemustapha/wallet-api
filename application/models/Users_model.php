@@ -2,21 +2,20 @@
  defined('BASEPATH') OR exit('No direct script access allowed');
  class Users_model extends CI_Model{
  	
- 	//PROCESS LOGIN
- 	function process_login($username, $password){
- 		$this->db->select('staff.STAFF_NO, staff.NAME, staff.EMAIL, staff.PHONE, staff.ROLE, login.STATUS, login.PASSWORD, login.USERNAME, outlets.OUTLET_ID, outlets.NAME OUTLET');
- 		$this->db->from('login');
- 		$this->db->join('staff', 'staff.STAFF_NO=login.USER_NO', 'left');
- 		$this->db->join('outlets', 'staff.OUTLET=outlets.OUTLET_ID', 'left');
- 		$this->db->where('login.USERNAME', $username);
- 		$this->db->where('login.PASSWORD', $password);
+ 	//VERIFY KEY
+ 	function verify_key($key){
+ 		$this->db->select('*');
+ 		$this->db->from('keys');
+ 		$this->db->where('PUBLIC_KEY', $key);
+ 		$this->db->or_where('PRIVATE_KEY', $key);
  		$query= $this->db->get();
- 		if ($query->num_rows()==1) {
+ 		if($query->num_rows()==1){
  			return $query->row();
  		}
  		else{
  			return false;
  		}
+
  	}
 
  	function user_log($user_number){
@@ -70,7 +69,28 @@
  		}
  	}
 
- 	 	
+ 	//UPDATE USER DATA
+ 	function update_user($data){
+ 		$this->db->where('user_no', $data['USER_NO']);
+ 		if($this->db->update('users', $data)){
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
+ 	}
+
+ 	//UPDATE USER LOGIN DATA 
+ 	function update_login($data){
+ 		$this->db->where('user_no', $data['USER_NO']);
+ 		if($this->db->update('login', $data)){
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
+ 	}
+	
 }
 
 
